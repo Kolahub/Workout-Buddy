@@ -1,0 +1,31 @@
+/* src/LandingPage.module.css */
+:root {
+  --primary: #1aac83;
+  --error: #e7195a;
+}
+
+.container {
+  text-align: center;
+}
+
+/* .header {
+  background-color: var(--primary);
+  padding: 20px;
+} */
+
+.title {
+  color: white;
+  margin: 0;
+}
+
+.mainContent {
+  padding: 20px;
+}
+
+.intro h2 {
+  color: var(--primary);
+}
+
+.intro p {
+  color: #333;
+}
