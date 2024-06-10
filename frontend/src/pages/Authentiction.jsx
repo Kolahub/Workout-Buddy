@@ -33,7 +33,7 @@ export async function Action ({ request }) {
           'Content-Type': 'application/json'
         }
       })
-
+      console.log(res);
       if(res.status === 400)
         return res
 

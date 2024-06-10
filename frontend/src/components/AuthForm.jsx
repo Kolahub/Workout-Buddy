@@ -1,14 +1,24 @@
+import { useEffect, useState } from "react";
 import { Form, NavLink, useActionData, useNavigation, useSearchParams } from "react-router-dom";
 
 function AuthForm() {
-
     const data = useActionData()
     const navigation = useNavigation()
-
   const [searchParams] = useSearchParams();
   const isLogin = searchParams.get("mode") === "login";
   const isSubmitting = navigation.state === 'submitting'
+
+  const [error, setError] = useState(undefined)
   console.log(isLogin, data);
+
+  useEffect(() => {
+    if(data && data.error) {
+      setError(data.error)
+      setTimeout(() => {
+        setError(undefined)
+      }, 4000)
+    }
+  }, [data])
 
   return (
     <>
@@ -23,7 +33,7 @@ function AuthForm() {
         <button disabled={isSubmitting}>
             {isSubmitting ? 'Submitting...' : 'save'}
           </button>
-        {/* {error && <div className="error">{error}</div>} */}
+        {error && <div className="error">{error}</div>}
       </Form>
 
       <div className="right-nav">

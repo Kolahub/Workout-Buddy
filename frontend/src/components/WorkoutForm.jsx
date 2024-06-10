@@ -66,7 +66,6 @@ const WorkoutForm = ( {method} ) => {
 export default WorkoutForm
 
 export async function Action({ request }) {
-  console.log('logged');
   const formData = await request.formData();
   const method = request.method;
 
@@ -75,8 +74,7 @@ export async function Action({ request }) {
 
     // Extract token from cookies
     const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)token\s*\=\s*([^;]*).*$)|^.*$/,
-      "$1"
+      /(?:(?:^|.*;\s*)token\s*\=\s*([^;]*).*$)|^.*$/,"$1"
     );
   
     if (!token) {
@@ -122,8 +120,6 @@ export async function Action({ request }) {
     );
   }
 
-  const data = await res.json()
-  console.log(data);
   return res;
 }
 

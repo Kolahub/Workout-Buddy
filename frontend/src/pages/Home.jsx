@@ -4,8 +4,7 @@ import { json, useLoaderData } from 'react-router-dom';
 
 function Home() {
   const workouts = useLoaderData();
-
-
+  console.log(workouts)
   return (
     <div className="home">
       <div className="workouts">
@@ -13,7 +12,7 @@ function Home() {
           <AllWorkouts key={workout._id} workout={workout} />
         ))}
       </div>
-      <WorkoutForm method='post'/>
+      <WorkoutForm method='POST'/>
     </div>
   );
 }
@@ -22,8 +21,7 @@ export default Home;
 
 export async function Loader() {
   const token = document.cookie.replace(
-    /(?:(?:^|.*;\s*)token\s*\=\s*([^;]*).*$)|^.*$/,
-    "$1"
+    /(?:(?:^|.*;\s*)token\s*\=\s*([^;]*).*$)|^.*$/,"$1"
   );
 
   console.log(token);

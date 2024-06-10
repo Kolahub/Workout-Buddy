@@ -1,28 +1,11 @@
-import { useEffect, useState } from "react";
 import { Form, Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  const [token, setToken] = useState(document.cookie.replace(
+  const token = document.cookie.replace(
     /(?:(?:^|.*;\s*)token\s*\=\s*([^;]*).*$)|^.*$/,
     "$1"
-  ));
-
-  useEffect(() => {
-    const handleTokenChange = () => {
-      const newToken = document.cookie.replace(
-        /(?:(?:^|.*;\s*)token\s*\=\s*([^;]*).*$)|^.*$/,
-        "$1"
-      );
-      setToken(newToken);
-    };
-
-    window.addEventListener('cookiechange', handleTokenChange);
-
-    return () => {
-      window.removeEventListener('cookiechange', handleTokenChange);
-    };
-  }, []);
-
+  );
+  
   return (
     <header>
       <div className="container">
@@ -43,12 +26,12 @@ const Navbar = () => {
             </NavLink>
 
             <Form action='/logout' method='post'>
-              <button>Logout</button>
+            <button>Logout</button>
             </Form>
           </div>
         )}
 
-        {!token && <div className="">
+{!token && <div className="">
           <Link to="auth">Get Started</Link>
         </div>}
       </div>
